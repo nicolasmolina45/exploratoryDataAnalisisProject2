@@ -16,3 +16,42 @@ Debe abordar las siguientes preguntas y tareas en su análisis exploratorio. Par
 4.	En los Estados Unidos, ¿cómo han cambiado las emisiones de fuentes relacionadas con la combustión del carbón entre 1999 y 2008?
 5.	¿Cómo han cambiado las emisiones de fuentes de vehículos motorizados entre 1999 y 2008 en  la ciudad de Baltimore ?
 6.	Compare las emisiones de fuentes de vehículos motorizados en la ciudad de Baltimore con las emisiones de fuentes de vehículos motorizados en  el condado de Los Ángeles , California .
+
+Datos
+menos 
+Los datos para esta tarea están disponibles en el sitio web del curso como un solo archivo zip:
+
+Datos para evaluación por pares [29Mb]
+
+El archivo zip contiene dos archivos:
+
+Datos de emisiones de PM2.5 (\color{rojo}{\verbo|resumenSCC_PM25.rds|}resumenSCC_PM25.rds): este archivo contiene un marco de datos con todos los datos de emisiones de PM2.5 para 1999, 2002, 2005 y 2008. Para cada año, la tabla contiene el número de toneladas de PM2.5 emitidas por un tipo específico de fuente para el año entero. Aquí están las primeras filas.
+
+##     fips      SCC Pollutant Emissions  type year
+## 4  09001 10100401  PM25-PRI    15.714 POINT 1999
+## 8  09001 10100404  PM25-PRI   234.178 POINT 1999
+## 12 09001 10100501  PM25-PRI     0.128 POINT 1999
+## 16 09001 10200401  PM25-PRI     2.036 POINT 1999
+## 20 09001 10200504  PM25-PRI     0.388 POINT 1999
+## 24 09001 10200602  PM25-PRI     1.490 POINT 1999
+
+\color{rojo}{\verbo|fips|}fips: Un número de cinco dígitos (representado como una cadena) que indica el condado de EE. UU.
+
+\color{rojo}{\verbo|SCC|}SCC: El nombre de la fuente indicado por una cadena de dígitos (consulte la tabla de clasificación del código fuente)
+
+\color{rojo}{\verbo|Contaminante|}Contaminante: Una cadena que indica el contaminante
+
+\color{rojo}{\verb|Emisiones|}Emisiones: Cantidad de PM2.5 emitida, en toneladas
+
+\color{rojo}{\verbo|tipo|}escribe: El tipo de fuente (puntual, no puntual, en carretera o fuera de carretera)
+
+\color{rojo}{\verbo|año|}año: El año de las emisiones registradas
+
+Tabla de códigos de clasificación de fuentes : esta tabla proporciona una asignación de las cadenas de dígitos SCC en la tabla de emisiones al nombre real de la fuente de PM2.5. Las fuentes se clasifican de diferentes maneras, desde las más generales hasta las más específicas, y puede optar por explorar las categorías que considere más útiles. Por ejemplo, la fuente “10100101” se conoce como “Ext Comb/Electric Gen/Anthracite Coal/Pulverized Coal”.
+
+Para leer cada uno de los dos archivos usando readRDS()función en R. Por ejemplo, la lectura en cada archivo se puede hacer con el siguiente código:
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+
+
+
